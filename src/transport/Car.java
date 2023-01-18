@@ -1,7 +1,6 @@
 package transport;
 
 import java.time.LocalDate;
-import java.security.Key;
 
 public class Car {
     private final String brand;
@@ -15,7 +14,6 @@ public class Car {
     private String regNumber;
     private final String numberSeats;
     private boolean isSummerWinter;
-
     private Key key;
 
     public Car(String brand, String model, String engineCapacity, String color,
@@ -131,13 +129,6 @@ public class Car {
         }
     }
 
-    public class Insurance {
-        private final LocalDate duration;
-
-        public Insurance(LocalDate duration) {
-            this.duration = duration;
-        }
-    }
 
 
     public String toString() {
