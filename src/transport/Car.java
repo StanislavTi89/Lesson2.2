@@ -1,10 +1,6 @@
 package transport;
 
 import java.time.LocalDate;
-import java.security.Key;
-import java.util.regex.Pattern;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Size;
 
 public class Car {
     private final String brand;
@@ -112,8 +108,39 @@ public class Car {
         this.key = key;
     }
 
+    public void changeType(int month) {
+        if ((month >= 11 && month <= 12) || (month >= 1 && month <= 3)) {
+            isSummerWinter = false;
+        }
+        if (month >= 4 && month <= 10) {
+            isSummerWinter = true;
+        }
+    }
     public static class Key {
-        private final boolean
+        private final Boolean remoteStart;
+        private final Boolean keyAccess;
+
+        public Key(Boolean remoteStart, Boolean keyAccess) {
+            this.remoteStart = validateBoolean(remoteStart);
+            this.keyAccess = validateBoolean(keyAccess);
+        }
+
+        private Boolean validateBoolean(Boolean remoteStart) {
+            return remoteStart;
+        }
+    }
+
+    public class Insurance {
+        private final LocalDate duration;
+
+        public Insurance(LocalDate duration) {
+            this.duration = duration;
+        }
+    }
+
+
+    public String toString() {
+        return toString();
     }
 
 }
