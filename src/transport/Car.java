@@ -2,6 +2,9 @@ package transport;
 
 import java.time.LocalDate;
 import java.security.Key;
+import java.util.regex.Pattern;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
 
 public class Car {
     private final String brand;
@@ -31,6 +34,34 @@ public class Car {
         this.bodyType = validateCarParametrs(bodyType);
         this.regNumber = validateCarNumber(regNumber);
         this.numberSeats = validateCarNumber(numberSeats);
+    }
+
+    private String validateCoutry(String country) {
+        return null;
+    }
+
+    private String validateCarNumber(String numberSeats) {
+        return null;
+    }
+
+    private String validateCarParametrs(String brand) {
+        return null;
+    }
+
+    private String validateCarYear(String year) {
+        return null;
+    }
+
+    private String validateCarColor(String color) {
+        return null;
+    }
+
+    private String validateCarEngine(String engineCapacity) {
+        return null;
+    }
+
+    private String validateTransmission(String transmission) {
+        return null;
     }
 
     public String getBrand() {
@@ -81,6 +112,8 @@ public class Car {
         this.key = key;
     }
 
-
+    public static class Key {
+        private final boolean
+    }
 
 }
