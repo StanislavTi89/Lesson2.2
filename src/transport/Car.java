@@ -1,7 +1,5 @@
 package transport;
 
-import java.time.LocalDate;
-
 public class Car {
     private final String brand;
     private final String model;
