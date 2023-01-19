@@ -16,7 +16,7 @@ public class Car {
 
     public Car(String brand, String model, String engineCapacity, String color,
                String year, String country, String transmission, String bodyType,
-               String regNumber, String numberSeats, boolean isSummerWinter, Key key) {
+               String regNumber, String numberSeats, Key key) {
         this.brand = validateCarParametrs(brand);
         this.model = validateCarParametrs(model);
         this.engineCapacity = validateCarEngine(engineCapacity);
@@ -30,31 +30,31 @@ public class Car {
     }
 
     private String validateCoutry(String country) {
-        return null;
+        return country;
     }
 
     private String validateCarNumber(String numberSeats) {
-        return null;
+        return numberSeats;
     }
 
     private String validateCarParametrs(String brand) {
-        return null;
+        return brand;
     }
 
     private String validateCarYear(String year) {
-        return null;
+        return year;
     }
 
     private String validateCarColor(String color) {
-        return null;
+        return color;
     }
 
     private String validateCarEngine(String engineCapacity) {
-        return null;
+        return engineCapacity;
     }
 
     private String validateTransmission(String transmission) {
-        return null;
+        return transmission;
     }
 
     public String getBrand() {
@@ -127,10 +127,11 @@ public class Car {
         }
     }
 
-
-
     public String toString() {
-        return toString();
+        return getBrand() + " " + getModel() + ", " + getEngineCapacity() + ", " + getColor()
+                + ", " + getYear() + ", " + getCountry() + " " + getTransmission() + ", " +
+                getBodyType() + ", " + getNumberSeats() + ", " + getRegNumber() + ", ";
+
     }
 
 }

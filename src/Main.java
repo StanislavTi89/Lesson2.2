@@ -9,6 +9,5 @@ public class Main {
                 new Car.Key(false,true));
         Car.Key key = new Car.Key(false, true);
         System.out.println(car);
-        System.out.println(key);
     }
 }
