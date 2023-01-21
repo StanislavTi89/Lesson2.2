@@ -3,7 +3,7 @@ package transport;
 public class Car {
     private final String brand;
     private final String model;
-    private String engineCapacity;
+    private double engineCapacity;
     private String color;
     private final String year;
     private final String country;
@@ -14,16 +14,15 @@ public class Car {
     private boolean isSummerWinter;
     private Key key;
 
-    public Car(String brand, String model, String engineCapacity, String color,
+    public Car(String brand, String model, double engineCapacity, String color,
                String year, String country, String transmission, String bodyType,
                String regNumber, String numberSeats, Key key) {
         this.brand = validateCarParametrs(brand);
         this.model = validateCarParametrs(model);
-        this.engineCapacity = validateCarEngine(engineCapacity);
+        this.engineCapacity = Double.parseDouble(validateCarEngine(String.valueOf(engineCapacity)));
         this.color = validateCarColor(color);
         this.year = validateCarYear(year);
         this.country = validateCoutry(country);
-        this.transmission = validateTransmission(transmission);
         this.bodyType = validateCarParametrs(bodyType);
         this.regNumber = validateCarNumber(regNumber);
         this.numberSeats = validateCarNumber(numberSeats);
@@ -53,9 +52,7 @@ public class Car {
         return engineCapacity;
     }
 
-    private String validateTransmission(String transmission) {
-        return transmission;
-    }
+
 
     public String getBrand() {
         return brand;
@@ -65,7 +62,7 @@ public class Car {
         return model;
     }
 
-    public String getEngineCapacity() {
+    public double getEngineCapacity() {
         return engineCapacity;
     }
 
@@ -113,6 +110,33 @@ public class Car {
             isSummerWinter = true;
         }
     }
+
+    public int validateCount (int vCount) {
+        return vCount <= 0 ? 4 : vCount;
+    }
+
+    public static String validateCountry(String value, String rus) {
+        return validateCountry(value, "Rus");
+    }
+
+    public static double validateEngineCapacity(double value) {
+        return value<=0?1.5:value;
+    }
+
+    public static int validateYear(Integer value) {
+        return value == null||value<=1900?2000:value;
+    }
+
+    public static String validateColor(String value, String синий) {
+        return validateColor(value, "Синий");
+    }
+
+    public static String validateTransmission(String value, String Коробка) {
+        return validateTransmission(value, "Автомат");
+    }
+
+
+
     public static class Key {
         private final Boolean remoteStart;
         private final Boolean keyAccess;
