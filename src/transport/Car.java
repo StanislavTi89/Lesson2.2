@@ -5,54 +5,30 @@ public class Car {
     private final String model;
     private double engineCapacity;
     private String color;
-    private final String year;
+    private int year;
     private final String country;
     private String transmission;
     private final String bodyType;
     private String regNumber;
-    private final String numberSeats;
+    private int numberSeats;
     private boolean isSummerWinter;
     private Key key;
 
     public Car(String brand, String model, double engineCapacity, String color,
-               String year, String country, String transmission, String bodyType,
-               String regNumber, String numberSeats, Key key) {
-        this.brand = validateCarParametrs(brand);
-        this.model = validateCarParametrs(model);
-        this.engineCapacity = Double.parseDouble(validateCarEngine(String.valueOf(engineCapacity)));
-        this.color = validateCarColor(color);
-        this.year = validateCarYear(year);
-        this.country = validateCoutry(country);
-        this.bodyType = validateCarParametrs(bodyType);
-        this.regNumber = validateCarNumber(regNumber);
-        this.numberSeats = validateCarNumber(numberSeats);
+               int year, String country, String transmission, String bodyType,
+               String regNumber, int numberSeats, Key key) {
+        this.brand = brand;
+        this.model = model;
+        this.engineCapacity = engineCapacity;
+        this.color = color;
+        this.year = year;
+        this.country = country;
+        this.transmission = transmission;
+        this.bodyType = bodyType;
+        this.regNumber = regNumber;
+        this.numberSeats = numberSeats;
+        this.key = key;
     }
-
-    private String validateCoutry(String country) {
-        return country;
-    }
-
-    private String validateCarNumber(String numberSeats) {
-        return numberSeats;
-    }
-
-    private String validateCarParametrs(String brand) {
-        return brand;
-    }
-
-    private String validateCarYear(String year) {
-        return year;
-    }
-
-    private String validateCarColor(String color) {
-        return color;
-    }
-
-    private String validateCarEngine(String engineCapacity) {
-        return engineCapacity;
-    }
-
-
 
     public String getBrand() {
         return brand;
@@ -70,7 +46,7 @@ public class Car {
         return color;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
@@ -90,7 +66,7 @@ public class Car {
         return regNumber;
     }
 
-    public String getNumberSeats() {
+    public int getNumberSeats() {
         return numberSeats;
     }
 
@@ -141,13 +117,21 @@ public class Car {
         private final Boolean remoteStart;
         private final Boolean keyAccess;
 
-        public Key(Boolean remoteStart, Boolean keyAccess) {
-            this.remoteStart = validateBoolean(remoteStart);
-            this.keyAccess = validateBoolean(keyAccess);
+        public Key(boolean remoteStart, boolean keyAccess) {
+            this.remoteStart = remoteStart;
+            this.keyAccess = keyAccess;
         }
 
-        private Boolean validateBoolean(Boolean remoteStart) {
+        public boolean remoteStart() {
             return remoteStart;
+        }
+
+        public boolean keyAccess() {
+            return keyAccess;
+        }
+
+        public String toString() {
+            return (remoteStart ? "модуль удаленки, " : "без удаленки, ") + (keyAccess ? "запуск без ключа, " : "запуск с ключем, ");
         }
     }
 
