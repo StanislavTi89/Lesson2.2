@@ -166,7 +166,7 @@ public class Car {
         }
     }
     public String toString() {
-        return "Марка: " + brand + ", " + "модель: " + model + ", " + "объём двигателя в литрах: " + engineVolume + ", " +
+        return "Марка: " + brand + ", " + "модель: " + model + ", " + "объём двигателя: " + engineVolume + ", " +
                 "цвет кузова: " + color + ", " + "год производства: " + year + ", " + "страна сборки: " + country + ", " +
                 "коробка передач: " + gear + ", " + "тип кузова: " + typeOfBody + ", " + "регистрационный номер: " + regNumber + ", " +
                 "кол-во мест: " + capacity + ", " + (summerTyres ? "летняя" : "зимняя") + " резина";
