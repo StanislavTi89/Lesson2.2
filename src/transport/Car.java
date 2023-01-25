@@ -1,33 +1,60 @@
 package transport;
 
 public class Car {
+
     private final String brand;
     private final String model;
-    private double engineCapacity;
+    private double engineVolume;
     private String color;
-    private int year;
+    private final int year;
     private final String country;
-    private String transmission;
-    private final String bodyType;
-    private String regNumber;
-    private int numberSeats;
-    private boolean isSummerWinter;
-    private Key key;
 
-    public Car(String brand, String model, double engineCapacity, String color,
-               int year, String country, String transmission, String bodyType,
-               String regNumber, int numberSeats, Key key) {
+    private String gear;
+    private final String typeOfBody;
+    private String regNumber;
+    private final int capacity;
+    private boolean summerTyres;
+
+    public Car(String brand,
+               String model,
+               double engineVolume,
+               String color,
+               int year,
+               String country,
+               String gear,
+               String typeOfBody,
+               String regNumber,
+               int capacity,
+               boolean summerTyres) {
+        if (brand == null || brand.isEmpty()) {
+            brand = "default";
+        }
         this.brand = brand;
+        if (model == null || model.isEmpty()) {
+            model = "default";
+        }
         this.model = model;
-        this.engineCapacity = engineCapacity;
-        this.color = color;
+        setEngineVolume(engineVolume);
+        setColor(color);
+        if (year <= 0) {
+            year = 2000;
+        }
         this.year = year;
+        if (country == null || country.isEmpty()) {
+            country = "default";
+        }
         this.country = country;
-        this.transmission = transmission;
-        this.bodyType = bodyType;
-        this.regNumber = regNumber;
-        this.numberSeats = numberSeats;
-        this.key = key;
+        setGear(gear);
+        if (typeOfBody == null || typeOfBody.isEmpty()) {
+            typeOfBody = "седан";
+        }
+        this.typeOfBody = typeOfBody;
+        setRegNumber(regNumber);
+        if (capacity <= 0) {
+            capacity = 5;
+        }
+        this.capacity = capacity;
+        this.summerTyres = summerTyres;
     }
 
     public String getBrand() {
@@ -38,12 +65,26 @@ public class Car {
         return model;
     }
 
-    public double getEngineCapacity() {
-        return engineCapacity;
+    public double getEngineVolume() {
+        return engineVolume;
+    }
+
+    public void setEngineVolume(double engineVolume) {
+        if (engineVolume <= 0) {
+            engineVolume = 1.5;
+        }
+        this.engineVolume = engineVolume;
     }
 
     public String getColor() {
         return color;
+    }
+
+    public void setColor(String color) {
+        if (color == null || color.isEmpty()) {
+            color = "белый";
+        }
+        this.color = color;
     }
 
     public int getYear() {
@@ -54,84 +95,50 @@ public class Car {
         return country;
     }
 
-    public String getTransmission() {
-        return transmission;
+    public String getGear() {
+        return gear;
     }
 
-    public String getBodyType() {
-        return bodyType;
+    public void setGear(String gear) {
+        if (gear == null || gear.isEmpty()) {
+            gear = "МКПП";
+        }
+        this.gear = gear;
+    }
+
+    public String getTypeOfBody() {
+        return typeOfBody;
     }
 
     public String getRegNumber() {
         return regNumber;
     }
 
-    public int getNumberSeats() {
-        return numberSeats;
+    public void setRegNumber(String regNumber) {
+        if (regNumber == null || regNumber.isEmpty()) {
+            regNumber = "xx___xxx";
+        }
+        this.regNumber = regNumber;
     }
 
-    public boolean isSummerWinter() {
-        return isSummerWinter;
+    public int getCapacity() {
+        return capacity;
     }
 
-    public void setKey(Key key) {
-        this.key = key;
+    public boolean isSummerTyres() {
+        return summerTyres;
     }
 
-    public void changeType(int month) {
+    public void setSummerTyres(boolean summerTyres) {
+        this.summerTyres = summerTyres;
+    }
+
+    public void changeTyres(int month) {
         if ((month >= 11 && month <= 12) || (month >= 1 && month <= 3)) {
-            isSummerWinter = false;
+            summerTyres = false;
         }
         if (month >= 4 && month <= 10) {
-            isSummerWinter = true;
-        }
-    }
-
-    public int validateCount (int vCount) {
-        return vCount <= 0 ? 4 : vCount;
-    }
-
-    public static String validateCountry(String value, String rus) {
-        return validateCountry(value, "Rus");
-    }
-
-    public static double validateEngineCapacity(double value) {
-        return value<=0?1.5:value;
-    }
-
-    public static int validateYear(Integer value) {
-        return value == null||value<=1900?2000:value;
-    }
-
-    public static String validateColor(String value, String синий) {
-        return validateColor(value, "Синий");
-    }
-
-    public static String validateTransmission(String value, String Коробка) {
-        return validateTransmission(value, "Автомат");
-    }
-
-
-
-    public static class Key {
-        private final Boolean remoteStart;
-        private final Boolean keyAccess;
-
-        public Key(boolean remoteStart, boolean keyAccess) {
-            this.remoteStart = remoteStart;
-            this.keyAccess = keyAccess;
-        }
-
-        public boolean remoteStart() {
-            return remoteStart;
-        }
-
-        public boolean keyAccess() {
-            return keyAccess;
-        }
-
-        public String toString() {
-            return (remoteStart ? "модуль удаленки, " : "без удаленки, ") + (keyAccess ? "запуск без ключа, " : "запуск с ключем, ");
+            summerTyres = true;
         }
     }
 
