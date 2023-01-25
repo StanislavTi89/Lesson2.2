@@ -143,10 +143,10 @@ public class Car {
     }
 
     public String toString() {
-        return getBrand() + " " + getModel() + ", " + getEngineCapacity() + ", " + getColor()
-                + ", " + getYear() + ", " + getCountry() + " " + getTransmission() + ", " +
-                getBodyType() + ", " + getNumberSeats() + ", " + getRegNumber() + ", ";
-
+        return "Марка: " + brand + ", " + "модель: " + model + ", " + "объём двигателя в литрах: " + engineVolume + ", " +
+                "цвет кузова: " + color + ", " + "год производства: " + year + ", " + "страна сборки: " + country + ", " +
+                "коробка передач: " + gear + ", " + "тип кузова: " + typeOfBody + ", " + "регистрационный номер: " + regNumber + ", " +
+                "кол-во мест: " + capacity + ", " + (summerTyres ? "летняя" : "зимняя") + " резина";
     }
 
 }
